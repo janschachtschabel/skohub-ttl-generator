@@ -52,10 +52,10 @@ class SkoHubTTLGenerator:
         ]
         
         self.field_suggestions = {
-            'uri': ['id', 'uri', 'conceptUri', 'identifier', 'uuid', 'code'],
-            'prefLabel': ['label', 'name', 'title', 'prefLabel', 'preferredLabel', 'term'],
+            'uri': ['id', 'uri', 'conceptUri', 'identifier', 'uuid', 'code', 'sys:node-uuid', 'properties.sys:node-uuid'],
+            'prefLabel': ['label', 'name', 'title', 'prefLabel', 'preferredLabel', 'term', 'cclom:title', 'properties.cclom:title', 'cm:name', 'properties.cm:name'],
             'altLabel': ['altLabel', 'alternativeLabel', 'synonym', 'aliases', 'alternative'],
-            'description': ['description', 'definition', 'scopeNote', 'note', 'comment'],
+            'description': ['description', 'definition', 'scopeNote', 'note', 'comment', 'cclom:general_description', 'properties.cclom:general_description', 'cm:content', 'properties.cm:content'],
             'broader': ['broader', 'parent', 'parentId', 'broaderConcept'],
             'narrower': ['narrower', 'children', 'childId', 'narrowerConcept']
         }
@@ -102,10 +102,10 @@ class SkoHubTTLGenerator:
         
         # SKOS properties with descriptions for better matching
         skos_properties = {
-            'uri': ['unique identifier', 'id', 'uri', 'concept identifier', 'resource identifier'],
-            'prefLabel': ['main label', 'preferred label', 'title', 'name', 'primary label'],
+            'uri': ['unique identifier', 'id', 'uri', 'concept identifier', 'resource identifier', 'node uuid', 'system identifier'],
+            'prefLabel': ['main label', 'preferred label', 'title', 'name', 'primary label', 'cclom title', 'content title', 'resource title'],
             'altLabel': ['alternative label', 'synonym', 'alias', 'alternative name', 'other label'],
-            'description': ['description', 'definition', 'scope note', 'explanation', 'comment'],
+            'description': ['description', 'definition', 'scope note', 'explanation', 'comment', 'general description', 'content description', 'resource description'],
             'broader': ['broader concept', 'parent', 'broader term', 'parent concept', 'hierarchy parent'],
             'narrower': ['narrower concept', 'child', 'narrower term', 'child concept', 'hierarchy child']
         }
@@ -197,10 +197,33 @@ class SkoHubTTLGenerator:
             elif file_extension == 'json':
                 data = json.load(uploaded_file)
                 if isinstance(data, list):
-                    df = pd.DataFrame(data)
+                    # Handle list of objects with potential nested properties
+                    df = pd.json_normalize(data)
+                    
+                    # Special handling for nested properties structures
+                    if 'properties' in df.columns:
+                        # Expand properties column if it contains nested objects
+                        properties_expanded = pd.json_normalize(df['properties'].tolist())
+                        # Add 'properties.' prefix to avoid column name conflicts
+                        properties_expanded.columns = ['properties.' + col for col in properties_expanded.columns]
+                        # Combine with original dataframe (excluding original properties column)
+                        df_without_props = df.drop('properties', axis=1)
+                        df = pd.concat([df_without_props, properties_expanded], axis=1)
+                    
+                    # Also check for other nested structures and flatten them
+                    for col in df.columns:
+                        if df[col].dtype == 'object':
+                            # Check if column contains nested dictionaries
+                            sample_val = df[col].dropna().iloc[0] if not df[col].dropna().empty else None
+                            if isinstance(sample_val, dict):
+                                # Flatten nested dictionaries
+                                nested_df = pd.json_normalize(df[col].tolist())
+                                nested_df.columns = [f'{col}.{subcol}' for subcol in nested_df.columns]
+                                df = df.drop(col, axis=1)
+                                df = pd.concat([df, nested_df], axis=1)
                 else:
                     df = pd.json_normalize(data)
-                return df, "JSON loaded successfully"
+                return df, "JSON loaded successfully with nested structure flattening"
             
             elif file_extension == 'ttl':
                 # Basic TTL parsing for concept extraction
@@ -988,7 +1011,7 @@ def main():
     st.markdown("---")
     st.markdown(
         "**SkoHub TTL Generator** | Built with Streamlit | "
-        "Powered by TTL Cleaner | AI-enhanced with OpenAI"
+        "Powered by TTL Cleaner | AI-enhanced with all-MiniLM-L12-v2"
     )
 
 if __name__ == "__main__":
