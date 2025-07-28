@@ -1,17 +1,52 @@
 # 🏷️ SkoHub TTL Generator
 
-**Universal tool for generating SKOS-compliant TTL vocabularies from CSV, JSON, or TTL files**
+**Advanced SKOS vocabulary generator with multi-file processing, flexible hierarchy extraction, and comprehensive validation**
 
-*Enhanced with local AI intelligence, memory-efficient processing, and comprehensive quality assurance*
+*Production-ready tool for creating W3C SKOS-compliant vocabularies from diverse data sources*
 
-## 🚀 Features
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/streamlit-1.28+-red.svg)](https://streamlit.io/)
+[![SKOS](https://img.shields.io/badge/SKOS-W3C%20Standard-green.svg)](https://www.w3.org/2004/02/skos/)
+[![TTL Cleaner](https://img.shields.io/badge/TTL%20Cleaner-Integrated-orange.svg)](https://github.com/your-repo/ttl-cleaner)
+
+## 🎯 Overview
+
+The SkoHub TTL Generator is a comprehensive tool for creating high-quality SKOS vocabularies from various data sources. It supports complex multi-file scenarios, flexible hierarchy extraction, data enrichment workflows, and includes advanced TTL validation with SKOS integrity checks.
+
+**Perfect for:**
+- 🏛️ **Educational institutions** creating learning resource vocabularies
+- 🏢 **Organizations** standardizing classification systems
+- 📚 **Libraries and archives** building controlled vocabularies
+- 🔬 **Research projects** requiring SKOS-compliant data
+- 🌍 **European projects** working with ESCO, KldB, and similar standards
+
+## 🚀 Key Features
+
+### 🎯 Multi-File Scenario Support
+- **Distributed Data**: Data for each record split across multiple files with intelligent joins
+- **Complete Records**: Each file contains complete records of different concept types
+- **Data Enrichment**: Enrich existing TTL files with additional metadata from CSV/JSON sources
+- **Data Combination**: Merge multiple datasets into a unified vocabulary collection
+- **Smart File Role Assignment**: Automatic detection of Primary, Secondary, Enrichment, and Combination roles
+- **Advanced Join Strategies**: URI-based, Label-based, and custom field mapping
+- **Memory-Efficient Processing**: Chunked processing for large datasets (tested with 17,000+ concepts)
+
+### 🌳 Flexible Hierarchy Extraction (6 Sources)
+- **TTL SKOS Relations**: Extract from existing `skos:broader`/`skos:narrower` relationships
+- **CSV Level Fields**: Build hierarchies from numeric level/depth columns (perfect for KldB)
+- **CSV Parent ID Fields**: Process parent-child relationships from ID references
+- **CSV Hierarchical Paths**: Handle structured paths like "Level1/Level2/Level3"
+- **Separate Hierarchy Files**: Dedicated files with parent-child definitions
+- **Auto-Detection**: Intelligent analysis of best hierarchy source with confidence scoring
+- **Advanced Processing**: Circular reference detection, orphan concept identification, depth statistics
+- **KldB Optimization**: Specialized prefix-matching for German classification systems
 
 ### 📁 Multi-Format Data Support
-- **CSV Files**: Automatic encoding detection (UTF-8, Latin1, CP1252)
-- **JSON Files**: Nested object support with automatic flattening
-- **TTL Files**: Concept extraction and transformation
-- **Multiple Files**: Memory-efficient combination of large datasets
-- **ESCO Support**: Optimized for ESCO Skills and Occupations processing
+- **CSV Files**: Automatic encoding detection (UTF-8, Latin1, CP1252, semicolon separators)
+- **JSON Files**: Nested object support with automatic flattening and properties expansion
+- **TTL Files**: Concept extraction and transformation with regex-based parsing
+- **Multiple Files**: Intelligent combination strategies with join validation
+- **ESCO & KLDB Support**: Optimized for European classification systems
 
 ### 🤖 Local AI Intelligence
 - **Sentence-Transformers**: Multilingual semantic similarity (German/English)
@@ -21,26 +56,47 @@
 - **Confidence Scoring**: Reliability indicators for suggestions
 - **Privacy-First**: All processing happens locally
 
+### 🔍 Advanced TTL Validation & Cleaning
+- **Integrated TTL Cleaner**: Production-ready SKOS validation with W3C compliance checks
+- **SKOS Integrity Validation**: Comprehensive checks for semantic relations, label conflicts, and structural issues
+- **Encoding & Text Cleaning**: Automatic Unicode normalization, encoding fixes, and text standardization
+- **Detailed Validation Reports**: Statistics, warnings, errors, and change logs with timestamps
+- **Memory-Efficient Processing**: Chunked validation for large vocabularies (1000+ concepts per chunk)
+- **Duplicate Detection**: Smart identification and removal of duplicate concepts and relationships
+
 ### 🔗 Flexible URI Management
-- **w3id.org Standard**: Default openeduhub namespace
-- **Custom Base URIs**: Full flexibility for your vocabulary
-- **Auto-Generation**: UUID-based URIs when needed
-- **URI Resolution**: Smart relative/absolute URI handling
+- **w3id.org Standard**: Default openeduhub namespace with customizable paths
+- **Custom Base URIs**: Full flexibility for organizational vocabularies
+- **Smart URI Generation**: UUID-based fallback when no URI field is provided
+- **URI Resolution**: Intelligent handling of relative/absolute URIs across data sources
+- **Namespace Management**: Support for multiple vocabularies and URI schemes
+
+### 🎨 Enhanced User Interface (7 Tabs)
+1. **Single File Upload**: Traditional single-file processing with AI-powered field suggestions
+2. **Multi-File Scenarios**: Advanced scenario selection and file role configuration
+3. **Field Mapping**: Intelligent SKOS property mapping with confidence scoring
+4. **Enhanced SKOS**: Extended vocabulary metadata and relationship configuration
+5. **Manual Entry**: Interactive concept creation and batch import capabilities
+6. **Hierarchy & Processing**: Flexible hierarchy extraction with 6 different source options
+7. **Generate & Validate**: TTL generation with comprehensive SKOS validation and statistics
 
 ### 📝 Manual Vocabulary Creation
-- **Small Vocabularies**: Create concepts manually through UI
-- **Real-time Preview**: See your vocabulary as you build it
-- **Concept Management**: Add, edit, remove concepts easily
-- **Instant TTL**: Generate TTL from manual entries
+- **Interactive Concept Builder**: Create concepts manually through intuitive UI
+- **Batch Import**: Paste multiple concepts at once with automatic parsing
+- **Real-time Preview**: See your vocabulary structure as you build it
+- **Visual Relationship Builder**: Drag-and-drop hierarchy creation
+- **Rich Metadata Editor**: Full SKOS property editing with validation
+- **Instant TTL Generation**: Generate TTL from manual entries with live validation
 
-### ✅ Enhanced Quality Assurance
-- **TTL Cleaner Integration**: Automatic validation and cleaning with audit trail
-- **Syntax Validation**: Ensures SKOS compliance and proper TTL formatting
-- **Duplicate Detection**: Intelligent removal of duplicate concepts
-- **Change Logging**: Comprehensive modification tracking with timestamps
-- **Memory Efficiency**: Chunked processing for large datasets (15,000+ concepts)
+### ✅ Production-Ready Quality Assurance
+- **Advanced TTL Cleaner**: Integrated W3C SKOS compliance validation with detailed reports
+- **SKOS Integrity Checks**: Comprehensive semantic relation validation and label conflict detection
+- **Encoding & Unicode Fixes**: Automatic text normalization and encoding standardization
+- **Duplicate Detection**: Smart identification and removal of duplicate concepts and relationships
+- **Change Logging**: Detailed audit trail with timestamps and modification statistics
+- **Memory-Efficient Processing**: Chunked validation for large vocabularies (tested with 17,000+ concepts)
 - **URI Normalization**: Consistent @base URI handling and relative URI resolution
-- **SKOS Property Preservation**: Maintains all relationships and metadata
+- **Validation Statistics**: Detailed reports with warnings, errors, and quality metrics
 
 ## 🛠️ Installation
 

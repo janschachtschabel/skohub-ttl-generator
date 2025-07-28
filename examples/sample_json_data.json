@@ -1,0 +1,74 @@
+[
+  {
+    "properties": {
+      "cclom:title": ["Programmierung"],
+      "sys:node-uuid": ["skill-001"],
+      "cclom:general_description": ["Fähigkeit zur Entwicklung von Softwareanwendungen"],
+      "cm:name": ["Programming"]
+    },
+    "level": 1,
+    "broader_concept": null,
+    "examples": ["Python-Entwicklung", "Web-Programmierung"],
+    "related_skills": ["Algorithmus-Design", "Debugging"]
+  },
+  {
+    "properties": {
+      "cclom:title": ["Python-Programmierung"],
+      "sys:node-uuid": ["skill-002"],
+      "cclom:general_description": ["Spezialisierung auf die Programmiersprache Python"],
+      "cm:name": ["Python Programming"]
+    },
+    "level": 2,
+    "broader_concept": "skill-001",
+    "examples": ["Django-Entwicklung", "Data Science mit Python"],
+    "related_skills": ["Web-Frameworks", "Datenanalyse"]
+  },
+  {
+    "properties": {
+      "cclom:title": ["Web-Entwicklung"],
+      "sys:node-uuid": ["skill-003"],
+      "cclom:general_description": ["Entwicklung von Webanwendungen und Websites"],
+      "cm:name": ["Web Development"]
+    },
+    "level": 2,
+    "broader_concept": "skill-001",
+    "examples": ["Frontend-Entwicklung", "Backend-APIs"],
+    "related_skills": ["HTML/CSS", "JavaScript"]
+  },
+  {
+    "properties": {
+      "cclom:title": ["Django-Framework"],
+      "sys:node-uuid": ["skill-004"],
+      "cclom:general_description": ["Web-Framework für Python-basierte Anwendungen"],
+      "cm:name": ["Django Framework"]
+    },
+    "level": 3,
+    "broader_concept": "skill-002",
+    "examples": ["REST-APIs mit Django", "Django-Admin"],
+    "related_skills": ["Python", "Datenbankdesign"]
+  },
+  {
+    "properties": {
+      "cclom:title": ["Datenanalyse"],
+      "sys:node-uuid": ["skill-005"],
+      "cclom:general_description": ["Analyse und Interpretation von Datenbeständen"],
+      "cm:name": ["Data Analysis"]
+    },
+    "level": 1,
+    "broader_concept": null,
+    "examples": ["Statistische Auswertungen", "Datenvisualisierung"],
+    "related_skills": ["Statistik", "Excel"]
+  },
+  {
+    "properties": {
+      "cclom:title": ["Machine Learning"],
+      "sys:node-uuid": ["skill-006"],
+      "cclom:general_description": ["Entwicklung und Anwendung von Algorithmen des maschinellen Lernens"],
+      "cm:name": ["Machine Learning"]
+    },
+    "level": 2,
+    "broader_concept": "skill-005",
+    "examples": ["Supervised Learning", "Neural Networks"],
+    "related_skills": ["Python", "Mathematik"]
+  }
+]

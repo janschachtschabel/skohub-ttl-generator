@@ -1,0 +1,16 @@
+Code,PrefLabel,Definition,Level,ParentCode,AltLabel,ScopeNote,Example
+1,Bildung und Erziehung,Oberbereich für alle Bildungs- und Erziehungsberufe,1,,Education,Umfasst alle Tätigkeiten im Bildungssektor,Lehrer an Grundschulen
+11,Lehrende und ausbildende Berufe,Berufe in der direkten Lehre und Ausbildung,2,1,Teaching Professions,Direkte Wissensvermittlung an Lernende,Mathematiklehrer
+111,Berufe in der Vor- und Grundschulpädagogik,Pädagogische Arbeit mit Kindern bis 10 Jahre,3,11,Early Education,Frühkindliche Bildung und Betreuung,Kindergärtnerin
+1111,Berufe in der Kinderbetreuung und -erziehung,Betreuung und Erziehung von Kleinkindern,4,111,Childcare,Betreuung in Kindertagesstätten,Erzieher im Kindergarten
+1112,Berufe in der Grundschulpädagogik,Unterricht in der Grundschule,4,111,Primary Teaching,Grundlegende Bildungsvermittlung,Grundschullehrer
+112,Berufe in der Sekundarstufe,Unterricht an weiterführenden Schulen,3,11,Secondary Education,Bildung für Jugendliche,Gymnasiallehrer
+1121,Berufe in der Sekundarstufe I,Unterricht in der Mittelstufe,4,112,Lower Secondary,Klassen 5-10,Realschullehrer
+1122,Berufe in der Sekundarstufe II,Unterricht in der Oberstufe,4,112,Upper Secondary,Klassen 11-13,Gymnasiallehrer Oberstufe
+12,Berufe in der Hochschulbildung und Forschung,Akademische Bildung und wissenschaftliche Forschung,2,1,Higher Education,Universitäre Lehre und Forschung,Universitätsprofessor
+121,Berufe in der Hochschullehre,Lehre an Universitäten und Hochschulen,3,12,University Teaching,Akademische Wissensvermittlung,Professor für Informatik
+1211,Berufe als Hochschullehrer,Professoren und Dozenten,4,121,University Professors,Lehre und Forschung an Hochschulen,Professor mit Lehrstuhl
+1212,Berufe als wissenschaftliche Mitarbeiter,Forschung und Lehrassistenz,4,121,Research Associates,Unterstützung in Lehre und Forschung,Wissenschaftlicher Mitarbeiter
+13,Berufe in der beruflichen Bildung,Ausbildung und Weiterbildung in Berufen,2,1,Vocational Education,Praxisorientierte Berufsausbildung,Ausbilder im Handwerk
+131,Berufe in der Berufsausbildung,Ausbildung in anerkannten Ausbildungsberufen,3,13,Vocational Training,Duale Ausbildung,Ausbildungsmeister
+1311,Berufe als Ausbilder,Praktische Berufsausbildung,4,131,Trainers,Vermittlung beruflicher Fertigkeiten,Ausbilder in der Industrie
